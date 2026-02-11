@@ -1,5 +1,8 @@
 [![ci](https://github.com/kakeru-lab/rpi-edge-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/kakeru-lab/rpi-edge-agent/actions/workflows/ci.yml)
 
+✅ CI guarantees: gofmt check + go vet + go test + Docker build on every push/PR.
+
+
 # rpi-edge-agent
 Reproducible **AI Agent on Raspberry Pi (Go)** — **systemd service** + **HTTP API** + **SQLite memory** + **local tools**.
 
