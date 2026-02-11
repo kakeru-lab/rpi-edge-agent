@@ -19,11 +19,12 @@ This project provides a minimal, reproducible “AI operator” that can run on 
 
 ## Quick Start (Raspberry Pi)
 ```bash
-git clone https://github.com/<YOUR_GITHUB>/rpi-edge-agent.git
+git clone https://github.com/kakeru-lab/rpi-edge-agent.git
 cd rpi-edge-agent
 cp deploy/env.example deploy/env && nano deploy/env
 sudo bash deploy/install.sh
 curl -s http://localhost:8080/healthz
+```
 
 ## Demo (ask the agent)
 
@@ -31,6 +32,7 @@ curl -s http://localhost:8080/healthz
 curl -s http://localhost:8080/agent/ask \
   -H 'Content-Type: application/json' \
   -d '{"session_id":"demo","message":"Check CPU temperature and summarize recent logs."}'
+```
 
 ## Project structure
 
