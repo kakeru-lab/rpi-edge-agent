@@ -45,11 +45,11 @@ app/      # Go service (agent + api + skills + sqlite)
 deploy/   # systemd unit + installer + env template
 docs/     # detailed guides (setup/security/troubleshooting)
 .github/  # CI workflow
+```
 
 ## Docs
 - `docs/SETUP.md` (from zero)
 - `docs/DEPLOY_PI.md` (systemd + installer)
 - `docs/SKILLS.md` (tools / allow-list)
 - `docs/SECURITY.md`
-- `docs/TROUBLESHOOTING.md`
 ```0
