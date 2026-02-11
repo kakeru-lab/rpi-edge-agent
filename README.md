@@ -21,10 +21,14 @@ This project provides a minimal, reproducible “AI operator” that can run on 
 ```bash
 git clone https://github.com/kakeru-lab/rpi-edge-agent.git
 cd rpi-edge-agent
-cp deploy/env.example deploy/env && nano deploy/env
-sudo bash deploy/install.sh
-curl -s http://localhost:8080/healthz
+cd app
+go mod tidy
+go test ./...
 ```
+# (Optional) enable LLM
+export OPENAI_API_KEY="sk-..."
+export OPENAI_MODEL="gpt-4o-mini"
+export OPENAI_BASE_URL="https://api.openai.com/v1"
 
 ## Demo (ask the agent)
 
