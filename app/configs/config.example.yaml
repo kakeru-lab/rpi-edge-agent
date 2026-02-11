@@ -2,7 +2,7 @@ server:
   addr: ":8080"
 
 memory:
-  sqlite_path: "/var/lib/rpi-edge-agent/agent.db"
+  sqlite_path: "./agent.db"
 
 tools:
   tail_log_default: "/var/log/syslog"
