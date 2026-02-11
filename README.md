@@ -1,4 +1,4 @@
-[![ci](https://github.com/<YOUR_GITHUB>/rpi-edge-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/<YOUR_GITHUB>/rpi-edge-agent/actions/workflows/ci.yml)
+[![ci](https://github.com/kakeru-lab/rpi-edge-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/kakeru-lab/rpi-edge-agent/actions/workflows/ci.yml)
 
 # rpi-edge-agent
 Reproducible **AI Agent on Raspberry Pi (Go)** — **systemd service** + **HTTP API** + **SQLite memory** + **local tools**.
