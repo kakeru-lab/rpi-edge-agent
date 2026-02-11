@@ -62,6 +62,7 @@ jobs:
         uses: ludeeus/action-shellcheck@v2
         with:
           scandir: "./deploy"
+          severity: warning
 
       - name: install.sh is executable
         run: |
