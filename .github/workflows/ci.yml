@@ -58,12 +58,16 @@ jobs:
           test -f deploy/env.example
           test -f deploy/rpi-edge-agent.service
 
-      - name: shellcheck install.sh
-        uses: ludeeus/action-shellcheck@v2
-        with:
-          scandir: "./deploy"
-          severity: warning
+      - name: Install shellcheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+
+      - name: Shellcheck deploy scripts
+        run: |
+          shellcheck deploy/install.sh
 
       - name: install.sh is executable
         run: |
           test -x deploy/install.sh
+
