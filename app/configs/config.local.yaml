@@ -1,0 +1,15 @@
+server:
+  addr: ":8080"
+
+llm:
+  base_url: "https://api.openai.com/v1"
+  api_key_env: "OPENAI_API_KEY"
+  model_env: "OPENAI_MODEL"
+  timeout_sec: 30
+
+memory:
+  sqlite_path: "./agent.db"
+
+tools:
+  allow_tools_env: "ALLOW_TOOLS"
+  tail_log_default: "/var/log/syslog"
