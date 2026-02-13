@@ -4,12 +4,8 @@ on:
   push:
   pull_request:
 
-permissions:
-  contents: read
-
 jobs:
   go:
-    name: Go (fmt/vet/test)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,44 +19,35 @@ jobs:
           cache: true
           cache-dependency-path: app/go.sum
 
-      - name: gofmt (check)
-        run: |
-          test -z "$(gofmt -l .)"
+      - name: fmt (check)
+        run: test -z "$(gofmt -l .)"
 
-      - name: go vet
-        run: |
-          go vet ./...
+      - name: vet
+        run: go vet ./...
 
-      - name: go test
-        run: |
-          go test ./...
+      - name: test
+        run: go test ./...
 
   docker:
-    name: Docker build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: build image
+        run: docker build -t rpi-edge-agent:ci .
+
+  deploy-lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: docker build
+      # ShellCheck for deploy/*.sh
+      - name: shellcheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: "./deploy"
+          severity: warning
+
+      - name: ensure executable bit
         run: |
-          docker build -t rpi-edge-agent:ci .
-
-  deploy:
-    name: Deploy scripts (lint)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install shellcheck
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y shellcheck
-
-      - name: Shellcheck deploy scripts
-        run: |
-          shellcheck deploy/install.sh
-
-      - name: install.sh is executable
-        run: |
-          test -x deploy/install.sh
-
+          test -f deploy/install.sh
+          bash -n deploy/install.sh
