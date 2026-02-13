@@ -1,0 +1,21 @@
+[Unit]
+Description=Raspberry Pi Edge Agent (Go)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/rpi-edge-agent/env
+ExecStart=/usr/local/bin/rpi-edge-agent --config /etc/rpi-edge-agent/config.yaml
+Restart=always
+RestartSec=2
+User=root
+
+# Hardening (safe defaults for a demo; adjust if needed)
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
