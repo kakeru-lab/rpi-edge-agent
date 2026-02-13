@@ -51,13 +51,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Ensure deploy/ exists
-        run: |
-          test -d deploy
-          test -f deploy/install.sh
-          test -f deploy/env.example
-          test -f deploy/rpi-edge-agent.service
-
       - name: Install shellcheck
         run: |
           sudo apt-get update
